@@ -5,6 +5,8 @@ import hello.core.member.MemberService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 public class SingletonTest {
 
     @Test
@@ -19,5 +21,19 @@ public class SingletonTest {
         System.out.println("memberService1 = " + memberService1);
         System.out.println("memberService2 = " + memberService2);
 
+        assertNotEquals(memberService1, memberService2);
+    }
+
+    @Test
+    @DisplayName("싱글폰 패턴 적용 객체")
+    void singletonServiceTest() {
+        SingletonService singletonService1 = SingletonService.getInstance();
+        SingletonService singletonService2 = SingletonService.getInstance();
+
+        System.out.println("singletonService1 = " + singletonService1);
+        System.out.println("singletonService2 = " + singletonService2);
+
+        assertEquals(singletonService1, singletonService2);
+        assertSame(singletonService1, singletonService2);
     }
 }
